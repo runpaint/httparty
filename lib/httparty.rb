@@ -76,7 +76,7 @@ module HTTParty
       default_options[:default_params].merge!(h)
     end
     
-    # Allows setting a base uri to be used for each request.
+    # Allows setting a hash of HTTP headers to be used for each request.
     #
     #   class Foo
     #     include HTTParty
