@@ -119,6 +119,27 @@ module HTTParty
     #   # Simple get with full url and query parameters
     #   # ie: http://foo.com/resource.json?limit=10
     #   Foo.get('http://foo.com/resource.json', :query => {:limit => 10})
+    #
+    # If a base URI has been set, either with the base_uri class method,
+    # or in the options hash passed to this method, you may supply a URL
+    # that should be resolved relative to that base. In general you will
+    # supply a path with a leading forward slash. For example:
+    #
+    #  class Foo
+    #    include HTTParty
+    #    base_uri 'github.com/api/v2/yaml'
+    #  end
+    #
+    #  Foo.get('/user/show/jnuemaker')
+    #
+    # In other words, don't do this:
+    #
+    #  class Foo
+    #    include HTTParty
+    #    base_uri 'github.com/api/v2/yaml/'
+    #  end
+    #
+    #  Foo.get('user/show/jnuemaker')
     def get(path, options={})
       perform_request Net::HTTP::Get, path, options
     end
